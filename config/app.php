@@ -123,4 +123,12 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
+
+    'aliases' => Illuminate\Support\Facades\Facade::defaultAliases()->merge([
+        'EasyPayment' => App\Facades\EasyPayment::class,
+    ])->toArray(),
+
+
+
 ];
