@@ -16,6 +16,8 @@ class PaymentSwipper {
 
     public $paymentMethodService;
 
+    private $credentials;
+
     public function with($methodName) {
         $this->methodName = $methodName;
         return $this;
@@ -44,16 +46,14 @@ class PaymentSwipper {
         return $this;
     }
 
-    public function setCreadentials(array $credentials) {
-
-        
-
+    public function setCredentials(array $credentials) {
+        $this->credentials = $credentials;
+        return $this;
     }
 
     public function pay() {
         $this->getPaymentMethodService();
-        $paymentMethod = new $this->paymentMethodService;
-
+        $paymentMethod = new $this->paymentMethodService($this->credentials);
 
         return $paymentMethod->pay();
     }
